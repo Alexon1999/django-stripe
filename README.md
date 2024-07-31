@@ -26,10 +26,6 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
-## Postman Collection for testing the API
-
-[Postman Collection](./django-stripe.postman_collection.json)
-
 ## Stripe Configuration
 
 Don't forget to Stripe Secret Key in the `django_stripe/settings.py` file.
@@ -37,6 +33,10 @@ Don't forget to Stripe Secret Key in the `django_stripe/settings.py` file.
 ```python
 STRIPE_SECRET_KEY = 'YOUR_STRIPE_SECRET_KEY'
 ```
+
+## Postman Collection for testing the API
+
+[Postman Collection](./django-stripe.postman_collection.json)
 
 
 ## Frontend integrating with this Django project and Stripe Frontend Library
