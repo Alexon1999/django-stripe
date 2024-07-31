@@ -19,7 +19,7 @@ class ProcessPaymentView(APIView):
         try:
             # Create a PaymentIntent and confirm it
             intent = stripe.PaymentIntent.create(
-                amount=data['amount'] * 100,
+                amount=int(data['amount'] * 100),
                 currency=data['currency'],
                 # payment_method_id is created in ClienSide using Stripe.js for web applications or @stripe/stripe-react-native for React Native apps
                 # testing payment_method_id: pm_card_visa (visa testing card) or you have this list here https://docs.stripe.com/testing?testing-method=payment-methods
