@@ -26,7 +26,7 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
-## Stripe Integration
+## Stripe Configuration
 
 Don't forget to Stripe Secret Key in the `django_stripe/settings.py` file.
 
