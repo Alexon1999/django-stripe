@@ -39,7 +39,7 @@ STRIPE_SECRET_KEY = 'YOUR_STRIPE_SECRET_KEY'
 [Postman Collection](./django-stripe.postman_collection.json)
 
 
-## Frontend integrating with this Django project and Stripe Frontend Library
+## Frontend Applications integrated with this Django Project and Stripe Frontend Library
 
 These are the repositories that use this Django project as a backend and Stripe Frontend Library to make payments.
 
