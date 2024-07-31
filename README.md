@@ -33,3 +33,10 @@ Don't forget to Stripe Secret Key in the `django_stripe/settings.py` file.
 ```python
 STRIPE_SECRET_KEY = 'YOUR_STRIPE_SECRET_KEY'
 ```
+
+
+## Frontend integrating with this Django project and Stripe Frontend Library
+
+These are the repositories that use this Django project as a backend and Stripe Frontend Library to make payments.
+
+- [React Native Application](https://github.com/Alexon1999/react-native-stripe)
