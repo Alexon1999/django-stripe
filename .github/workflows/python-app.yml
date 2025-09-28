@@ -29,11 +29,14 @@ jobs:
           cat requirements.txt
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           ls -la
-      - name: Upload venv as artifact
+      - name: Archive venv
+        run: |
+          tar czf venv.tar.gz .venv
+      - name: Upload venv archive as artifact
         uses: actions/upload-artifact@v4
         with:
           name: venv
-          path: .venv
+          path: venv.tar.gz
           if-no-files-found: error
 
   security:
@@ -49,7 +52,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: venv
-          path: .venv
+          path: .
+      - name: Extract venv
+        run: |
+          tar xzf venv.tar.gz
       - uses: snyk/actions/setup@master
       - uses: actions/setup-go@v1
         with:
@@ -74,7 +80,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: venv
-          path: .venv
+          path: .
+      - name: Extract venv
+        run: |
+          tar xzf venv.tar.gz
       - name: Lint with flake8
         run: |
           source .venv/bin/activate
