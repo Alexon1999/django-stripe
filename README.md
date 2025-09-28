@@ -16,6 +16,22 @@ pip3 install -r requirements.txt
 ```
 
 ```bash
+# Create .env.local file
+vim .env.local
+# Add the following lines in .env.local:
+DJANGO_SECRET_KEY="xxxxxxxxxx"
+STRIPE_SECRET_KEY="xxxxxxxxxx"
+```
+
+To load these environment variables in your terminal session, run:
+
+```bash
+set -a; source .env.local; set +a
+```
+This will export all variables defined in .env.local to your current shell session.
+
+
+```bash
 # Apply the migrations
 python3 manage.py migrate
 ```
