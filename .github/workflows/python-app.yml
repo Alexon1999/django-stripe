@@ -29,6 +29,14 @@ jobs:
         pip install flake8
         cat requirements.txt
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Snyk SAST (Code Security)
+      uses: snyk/actions/python@v1
+      with:
+        args: --all-projects
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
