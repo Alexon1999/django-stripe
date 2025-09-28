@@ -57,9 +57,7 @@ jobs:
         run: |
           tar xzf venv.tar.gz
       - uses: snyk/actions/setup@master
-      - uses: actions/setup-go@v1
-        with:
-          go-version: '1.13'
+        continue-on-error: true
       - name: Snyk monitor
         run: |
           source .venv/bin/activate
