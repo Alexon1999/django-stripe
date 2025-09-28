@@ -94,6 +94,8 @@ jobs:
           flake8 . --count --show-source --statistics
           flake8 . --count --exit-zero --statistics
       - name: Test with pytest
+        env:
+          DJANGO_SECRET_KEY: dummysecretkeyforci
         run: |
           source .venv/bin/activate
           pip install pytest pytest-django
