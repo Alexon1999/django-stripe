@@ -9,5 +9,3 @@ sqlparse==0.5.1
 stripe==10.5.0
 typing_extensions==4.12.2
 urllib3==2.5.0
-pytest==8.4.2
-pytest-django==4.11.1
