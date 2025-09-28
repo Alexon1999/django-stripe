@@ -26,6 +26,19 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
+## Running Tests
+
+```bash
+# Run all tests
+python3 manage.py test
+
+# Run tests with verbose output
+python3 manage.py test -v 2
+
+# Run only payment tests
+python3 manage.py test payments.tests
+```
+
 ## Stripe Configuration
 
 Don't forget to Stripe Secret Key in the `django_stripe/settings.py` file.
