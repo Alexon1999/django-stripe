@@ -28,12 +28,13 @@ jobs:
           python -m pip install --upgrade pip
           cat requirements.txt
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          ls -la .venv/
+          ls -la
       - name: Upload venv as artifact
         uses: actions/upload-artifact@v4
         with:
           name: venv
           path: .venv
+          if-no-files-found: error
 
   security:
     runs-on: ubuntu-latest
