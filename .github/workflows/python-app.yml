@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   build:
@@ -39,7 +40,7 @@ jobs:
           path: venv.tar.gz
           if-no-files-found: error
 
-  security:
+  security-checks-sast:
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -72,7 +73,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    needs: security
+    needs: security-checks-sast
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python 3.10
@@ -100,3 +101,16 @@ jobs:
           source .venv/bin/activate
           pip install pytest pytest-django
           pytest tests/ --maxfail=2 --disable-warnings -v
+
+  # Deploy to test environment
+
+  # DAST (Dynamic Application Security Testing) with OWASP ZAP on a test environment
+  # for DAST, we need a running instance of the api/web application to scan
+  security-checks-dast:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.12.0
+        with:
+          target: 'https://ualexon.com' # Replace with your test environment URL
