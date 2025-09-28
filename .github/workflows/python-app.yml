@@ -13,10 +13,21 @@ permissions:
   contents: read
 
 jobs:
+  security:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@master
+        - uses: snyk/actions/setup@master
+        - uses: actions/setup-go@v1
+          with:
+            go-version: '1.13'
+        - name: Snyk monitor
+          run: snyk test
+          env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.10
@@ -29,13 +40,6 @@ jobs:
         pip install flake8
         cat requirements.txt
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-    - name: Snyk SAST (Code Security)
-      uses: snyk/actions/python@v1
-      with:
-        args: --all-projects
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
     - name: Lint with flake8
       run: |
